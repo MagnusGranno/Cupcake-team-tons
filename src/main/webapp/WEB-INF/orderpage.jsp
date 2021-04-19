@@ -13,7 +13,7 @@
     </jsp:attribute>
 
     <jsp:body>
-        <form action="${pageContext.request.contextPath}/fc/" method="post">
+        <form method="post" action="${pageContext.request.contextPath}/fc/shoppingcart">
             <div class="row">
                 <div class="col-lg-3 pb-2">
                     <select class="form-select " name="bottom" id="bottom">
@@ -24,21 +24,15 @@
                     </select>
                 </div>
                 <div class="col-lg-3 pb-2">
-                    <select class="form-select " name="top" id="top">
+                    <select class="form-select" name="top" id="top">
                         <option selected>Choose your topping</option>
-                        <option value="1">Chocolate - 5kr</option>
-                        <option value="2">Blueberry - 5kr</option>
-                        <option value="3">Raspberry - 5kr</option>
-                        <option value="4">Crispy - 6kr</option>
-                        <option value="5">Strawberry - 6kr</option>
-                        <option value="6">Rum/Raisin - 7kr</option>
-                        <option value="7">Orange - 8kr</option>
-                        <option value="8">Lemon - 8kr</option>
-                        <option value="9">Blue cheese - 9kr</option>
+                        <c:forEach var="topping" items="${applicationScope.toppingList}">
+                            <option value="${topping.id}">${topping.name} - ${topping.price} kr.</option>
+                        </c:forEach>
                     </select>
                 </div>
                 <div class="col-lg-3 pb-2">
-                    <select class="form-select">
+                    <select class="form-select" name="amount" id="amount">
                         <option selected>How many cupcakes</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -55,7 +49,7 @@
                     </select>
                 </div>
                 <div class="col-lg-3 pb-2">
-                    <a type="button" class="btn btn-primary" type="submit">Læg i kurv</a>
+                    <button type="submit" class="btn btn-primary">Læg i kurv</button>
                 </div>
             </div>
         </form>
