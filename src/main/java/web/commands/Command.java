@@ -4,6 +4,7 @@ import business.exceptions.UserException;
 import business.persistence.Database;
 
 import java.util.HashMap;
+import javax.persistence.criteria.Order;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -28,6 +29,7 @@ public abstract class Command
         commands.put("registercommand", new RegisterCommand(""));
         commands.put("customerpage", new CommandProtectedPage("customerpage", "customer"));
         commands.put("employeepage", new CommandProtectedPage("employeepage", "employee"));
+        commands.put("orderpage", new OrderCommand("orderpage"));
     }
 
     public static Command fromPath(
