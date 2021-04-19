@@ -13,7 +13,7 @@
     </jsp:attribute>
 
     <jsp:body>
-        <form action="#" method="post">
+        <form action="${pageContext.request.contextPath}/fc/" method="post">
             <div class="row">
                 <div class="col-lg-3 pb-2">
                     <select class="form-select " name="bottom" id="bottom">

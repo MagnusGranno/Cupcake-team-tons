@@ -37,7 +37,7 @@
         </c:if>
         <a class="p-2 text-dark" href="${pageContext.request.contextPath}/fc/orderpage">Orders</a>
         <a class="p-2 text-dark" href="#">Profile</a>
-        <a class="p-2 text-dark" href="#">About</a>
+        <a class="p-2 text-dark" href="${pageContext.request.contextPath}/fc/shoppingcart">Cart</a>
     </nav>
 
     </div>
