@@ -67,12 +67,12 @@
     </c:if>
 </header>
 
-<div id="body" class="container" style="min-height: 20vh;">
+<div id="body" class="w-100" style="min-height: 20vh;">
     <jsp:doBody/>
 </div>
 
 <!-- Footer -->
-<div class="container">
+<div class="w-100">
     <br>
     <hr>
     <br>

@@ -14,8 +14,8 @@
 
     <jsp:body>
 
-        <div>
-            <h2>Our Cool Site</h2>
+        <div class="w-100 bg-white border-bottom shadow-sm mx-auto">
+            <h1>Velkommen til Olsker Cupcakes</h1>
 
             <div style="margin-top: 3em;margin-bottom: 3em;">
                 Main page for this 2. semester start project used at cphbusiness.dk
