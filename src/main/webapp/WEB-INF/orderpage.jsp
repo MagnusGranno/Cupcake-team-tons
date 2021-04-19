@@ -17,12 +17,10 @@
             <div class="row">
                 <div class="col-lg-3 pb-2">
                     <select class="form-select " name="bottom" id="bottom">
-                        <option selected>Choose your bottom</option>
-                        <option value="1">Chocolate - 5kr</option>
-                        <option value="2">Vanilla - 5kr</option>
-                        <option value="3">Nugmeg - 5kr</option>
-                        <option value="4">Pistacio - 6kr</option>
-                        <option value="5">Almond - 7kr</option>
+                    <option selected>Choose your bottom</option>
+                        <c:forEach var="bottom" items="${applicationScope.bottomList}">
+                            <option value="${bottom.id}">${bottom.name} - ${bottom.price} kr.</option>
+                        </c:forEach>
                     </select>
                 </div>
                 <div class="col-lg-3 pb-2">

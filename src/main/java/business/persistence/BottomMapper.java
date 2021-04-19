@@ -25,7 +25,7 @@ public class BottomMapper
         List<Bottom> bottomList = new ArrayList<>();
         try (Connection connection = database.connect())
         {
-            String sql = "SELECT * FROM BOTTOM;";
+            String sql = "SELECT * FROM bottom;";
 
             try (PreparedStatement ps = connection.prepareStatement(sql))
             {
