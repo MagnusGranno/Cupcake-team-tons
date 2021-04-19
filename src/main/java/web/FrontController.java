@@ -1,6 +1,7 @@
 package web;
 
 import business.exceptions.UserException;
+import business.persistence.BottomMapper;
 import business.persistence.Database;
 import web.commands.*;
 
@@ -36,6 +37,17 @@ public class FrontController extends HttpServlet
             {
                 Logger.getLogger("web").log(Level.SEVERE, ex.getMessage(), ex);
             }
+        }
+
+        BottomMapper bottomMapper = new BottomMapper(database);
+
+        try
+        {
+            getServletContext().setAttribute("bottomList", bottomMapper.getAllBottoms());
+        }
+        catch (UserException ex)
+        {
+            Logger.getLogger("web").log(Level.SEVERE, ex.getMessage(), ex);
         }
 
         // Initialize whatever global datastructures needed here:
