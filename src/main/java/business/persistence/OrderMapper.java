@@ -75,8 +75,8 @@ public class OrderMapper {
 
 
             try (PreparedStatement ps = connection.prepareStatement(sql)){
-                ps.setInt(1,cupcake.getBottomID());
-                ps.setInt(2,cupcake.getToppingID());
+                ps.setInt(1,cupcake.getToppingID());
+                ps.setInt(2,cupcake.getBottomID());
 
                 ResultSet rs = ps.executeQuery();
                 while(rs.next()){
@@ -101,8 +101,9 @@ public class OrderMapper {
                 ps.setInt(1,1);
                 ps.setInt(2,cupcake.getToppingID());
                 ps.setInt(3,cupcake.getBottomID());
-                ps.setInt(4,cupcake.getAmount());
-                ps.setInt(5,price);
+                ps.setInt(4,price*cupcake.getAmount());
+                ps.setInt(5,cupcake.getAmount());
+
 
                 ps.executeUpdate();
 
