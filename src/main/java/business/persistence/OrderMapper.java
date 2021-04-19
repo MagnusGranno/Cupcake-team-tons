@@ -71,7 +71,7 @@ public class OrderMapper {
 
         try (Connection connection = database.connect()){
 
-            String sql = "SELECT SUM(bottom.price) + SUM(topping.price) AS 'total_price' FROM bottom INNER JOIN topping on topping.price = bottom.price WHERE bottom_id = ? AND topping_id = ?;";
+            String sql = "SELECT (SELECT SUM(topping.price) FROM topping WHERE topping_id = ?) + SUM(bottom.price) AS 'total price' FROM bottom WHERE bottom_id = ?;";
 
 
             try (PreparedStatement ps = connection.prepareStatement(sql)){
