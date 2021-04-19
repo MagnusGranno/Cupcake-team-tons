@@ -20,6 +20,23 @@
             <div style="margin-top: 3em;margin-bottom: 3em;">
                 Main page for this 2. semester start project used at cphbusiness.dk
             </div>
+            <div>
+                <table class="table">
+                    <thead>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    </thead>
+                    <c:forEach var="bottom" items="${applicationScope.bottomList}">
+                    <tr>
+                        <td>${bottom.id}</td>
+                        <td>${bottom.name}</td>
+                        <td>${bottom.price} kr.</td>
+                    </tr>
+                    </c:forEach>
+                </table>
+
+            </div>
 
 
             <c:if test="${sessionScope.role == 'employee' }">

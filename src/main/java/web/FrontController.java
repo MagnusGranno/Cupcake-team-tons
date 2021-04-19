@@ -1,6 +1,7 @@
 package web;
 
 import business.exceptions.UserException;
+import business.persistence.BottomMapper;
 import business.persistence.Database;
 import web.commands.*;
 
@@ -18,9 +19,9 @@ import javax.servlet.http.HttpServletResponse;
 public class FrontController extends HttpServlet
 {
 
-    private final static String USER = "managesql";
-    private final static String PASSWORD = "sql2139";
-    private final static String URL = "jdbc:mysql://165.22.92.46:3306/Cupcake?serverTimezone=CET";
+    private final static String USER = "dev";
+    private final static String PASSWORD = "Dev2139!";
+    private final static String URL = "jdbc:mysql://localhost:3306/cupcake?serverTimezone=CET";
 
 
     public static Database database;
@@ -38,6 +39,17 @@ public class FrontController extends HttpServlet
             {
                 Logger.getLogger("web").log(Level.SEVERE, ex.getMessage(), ex);
             }
+        }
+
+        BottomMapper bottomMapper = new BottomMapper(database);
+
+        try
+        {
+            getServletContext().setAttribute("bottomList", bottomMapper.getAllBottoms());
+        }
+        catch (UserException ex)
+        {
+            Logger.getLogger("web").log(Level.SEVERE, ex.getMessage(), ex);
         }
 
         // Initialize whatever global datastructures needed here:
