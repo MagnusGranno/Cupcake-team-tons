@@ -17,9 +17,9 @@ public class OrderMapper {
     }
 
 
-    public void insertCupcakesIntoDB(Cupcake cupcake) throws UserException {
+    /*public void insertCupcakesIntoDB(Cupcake cupcake) throws UserException {
 
-        /*int toppingPrice;
+        int toppingPrice;
         int bottomPrice;
 
 
@@ -61,7 +61,7 @@ public class OrderMapper {
             }
         }catch (SQLException e){
             throw new UserException(e.getMessage());
-        }*/
+        }
 
 
         int price = 0;
@@ -72,8 +72,8 @@ public class OrderMapper {
 
 
             try (PreparedStatement ps = connection.prepareStatement(sql)){
-                ps.setInt(1,cupcake.getToppingID());
-                ps.setInt(2,cupcake.getBottomID());
+                ps.setInt(1,cupcake.getTopping());
+                ps.setInt(2,cupcake.getBottom());
 
                 ResultSet rs = ps.executeQuery();
                 while(rs.next()){
@@ -96,8 +96,8 @@ public class OrderMapper {
             try (PreparedStatement ps = connection.prepareStatement(sql)){
 
                 ps.setInt(1,1);
-                ps.setInt(2,cupcake.getToppingID());
-                ps.setInt(3,cupcake.getBottomID());
+                ps.setInt(2,cupcake.getTopping());
+                ps.setInt(3,cupcake.getBottom());
                 ps.setInt(4,price*cupcake.getAmount());
                 ps.setInt(5,cupcake.getAmount());
 
@@ -112,5 +112,5 @@ public class OrderMapper {
         }catch (SQLException e){
             throw new UserException(e.getMessage());
         }
-    }
+    }*/
 }

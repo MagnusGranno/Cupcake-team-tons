@@ -1,7 +1,6 @@
 package business.persistence;
 
 import business.entities.Cupcake;
-import business.entities.CupcakeFromDB;
 import business.exceptions.UserException;
 
 import java.sql.Connection;
@@ -20,7 +19,7 @@ public class CartMapper {
     }
 
 
-    public List<CupcakeFromDB> getCupcakesFromDB(int orderID) throws UserException {
+    /*public List<CupcakeFromDB> getCupcakesFromDB(int orderID) throws UserException {
 
         List<CupcakeFromDB> cupcakeList = null;
 
@@ -52,6 +51,6 @@ public class CartMapper {
             throw new UserException(e.getMessage());
         }
         return cupcakeList;
-    }
+    }*/
 
 }

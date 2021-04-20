@@ -45,21 +45,17 @@ public class FrontController extends HttpServlet
         BottomMapper bottomMapper = new BottomMapper(database);
         ToppingMapper toppingMapper = new ToppingMapper(database);
 
-        try
-        {
+        try {
             getServletContext().setAttribute("bottomList", bottomMapper.getAllBottoms());
-        }
-        catch (UserException ex)
-        {
+
+        } catch (UserException ex) {
             Logger.getLogger("web").log(Level.SEVERE, ex.getMessage(), ex);
         }
 
-        try
-        {
+        try {
             getServletContext().setAttribute("toppingList", toppingMapper.getAllToppings());
-        }
-        catch (UserException ex)
-        {
+
+        } catch (UserException ex) {
             Logger.getLogger("web").log(Level.SEVERE, ex.getMessage(), ex);
         }
 

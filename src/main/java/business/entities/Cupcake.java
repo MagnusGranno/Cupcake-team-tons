@@ -2,14 +2,14 @@ package business.entities;
 
 public class Cupcake {
 
-    private int toppingID;
-    private int bottomID;
+    private Topping topping;
+    private Bottom bottom;
     private int amount;
     private int price;
 
-    public Cupcake(int toppingID, int bottomID, int amount, int price) {
-        this.toppingID = toppingID;
-        this.bottomID = bottomID;
+    public Cupcake(Topping topping, Bottom bottom, int amount, int price) {
+        this.topping = topping;
+        this.bottom = bottom;
         this.amount = amount;
         this.price = price;
     }
@@ -18,12 +18,12 @@ public class Cupcake {
         return price;
     }
 
-    public int getToppingID() {
-        return toppingID;
+    public Topping getTopping() {
+        return topping;
     }
 
-    public int getBottomID() {
-        return bottomID;
+    public Bottom getBottom() {
+        return bottom;
     }
 
     public int getAmount() {

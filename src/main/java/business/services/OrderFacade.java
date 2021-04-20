@@ -16,11 +16,11 @@ public class OrderFacade {
     }
 
 
-    public void insertCupcakesIntoDB(Cupcake cupcake) throws UserException {
+    /*public void insertCupcakesIntoDB(Cupcake cupcake) throws UserException {
 
         orderMapper.insertCupcakesIntoDB(cupcake);
 
-    }
+    }*/
 
 
 }

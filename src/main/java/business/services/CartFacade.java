@@ -1,7 +1,6 @@
 package business.services;
 
 import business.entities.Cupcake;
-import business.entities.CupcakeFromDB;
 import business.exceptions.UserException;
 import business.persistence.CartMapper;
 import business.persistence.Database;
@@ -20,13 +19,13 @@ public class CartFacade{
     }
 
 
-    public List<CupcakeFromDB> getCupcakesFromDB(int orderID) throws UserException {
+   /* public List<CupcakeFromDB> getCupcakesFromDB(int orderID) throws UserException {
 
         List<CupcakeFromDB> cupcakeFromDBList = cartMapper.getCupcakesFromDB(orderID);
 
         return cupcakeFromDBList;
 
-    }
+    }*/
 
 
 

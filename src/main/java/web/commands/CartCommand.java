@@ -1,8 +1,7 @@
 package web.commands;
 
-import business.entities.CupcakeFromDB;
+import business.entities.Cupcake;
 import business.exceptions.UserException;
-import business.persistence.CartMapper;
 import business.services.CartFacade;
 
 import javax.servlet.http.HttpServletRequest;
@@ -31,12 +30,15 @@ public class CartCommand extends Command
         //TODO: skal ændres alt efter hvilken bruger er logget ind
         int orderID = 1;
 
-        List<CupcakeFromDB> cupcakeFromDBList = cartFacade.getCupcakesFromDB(orderID);
+        /*List<CupcakeFromDB> cupcakeFromDBList = cartFacade.getCupcakesFromDB(orderID);
 
         HttpSession httpSession = request.getSession();
 
         httpSession.setAttribute("cupcakeList",cupcakeFromDBList);
 
+        HttpSession httpSession = request.getSession();
+
+        List<Cupcake> cupcakeSessionList = (List<Cupcake>) httpSession.getAttribute("cartList");*/
 
 
 

@@ -15,24 +15,22 @@
     <jsp:body>
 
 
-
-        <p>Tester</p>
-
-        <c:forEach var="cupcake" items="${sessionScope.cupcakeList}">
-            <p> ${cupcake.}</p>
-            <table class="table">
-                <thead>
-                <th>Order id</th>
-                <th></th>
-                </thead>
+        <table class="table">
+            <thead>
+            <th>Topping</th>
+            <th>Bottom</th>
+            <th>Mængde</th>
+            <th>Pris</th>
+            </thead>
+            <c:forEach var="cartList" items="${sessionScope.cartList}">
                 <tr>
-                    <td>${}</td>
+                    <td>${cartList.topping.name}</td>
+                    <td>${cartList.bottom.name}</td>
+                    <td>${cartList.amount}</td>
+                    <td>${cartList.price} kr.</td>
                 </tr>
-
-            </table>
-        </c:forEach>
-
-
+            </c:forEach>
+        </table>
 
 
     </jsp:body>
