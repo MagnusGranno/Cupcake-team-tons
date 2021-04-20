@@ -20,10 +20,11 @@ public class AdminCustomerCommand extends CommandProtectedPage
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException
     {
+        String id = request.getParameter("updatebalance");
+        String amount = request.getParameter("amount");
         try
         {
-            String id = request.getParameter("updatebalance");
-            String amount = request.getParameter("amount");
+
 
             if (id != null)
             {
