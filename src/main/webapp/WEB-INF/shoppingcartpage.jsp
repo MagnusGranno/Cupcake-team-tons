@@ -13,15 +13,17 @@
     </jsp:attribute>
 
     <jsp:body>
+        <h2 class="pb-2">Cart for ${sessionScope.email}</h2>
 
 
         <table class="table">
-            <thead>
+            <thead class="table-info">
             <th>Topping</th>
             <th>Bottom</th>
-            <th>Antal</th>
-            <th>Pris</th>
+            <th>Amount</th>
+            <th>Price</th>
             <th>Total</th>
+
             </thead>
             <c:forEach var="cartList" items="${sessionScope.cartList}">
                 <tr>
