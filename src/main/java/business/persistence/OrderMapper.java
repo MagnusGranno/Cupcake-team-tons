@@ -1,19 +1,16 @@
 package business.persistence;
 
 import business.entities.Cupcake;
-import business.entities.Topping;
 import business.exceptions.UserException;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
 
 public class OrderMapper {
 
     private Database database;
-    private ToppingMapper toppingMapper;
 
     public OrderMapper(Database database) {
         this.database = database;

@@ -29,8 +29,12 @@ public abstract class Command
         commands.put("registercommand", new RegisterCommand(""));
         commands.put("customerpage", new CommandProtectedPage("customerpage", "customer"));
         commands.put("employeepage", new CommandProtectedPage("employeepage", "employee"));
+
         commands.put("orderpage", new OrderCommand("orderpage"));
         commands.put("shoppingcart", new ShoppingCartCommand("orderpage","customer"));
+
+        commands.put("cart", new CartCommand("shoppingcartpage","customer"));
+
     }
 
     public static Command fromPath(

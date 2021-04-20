@@ -16,6 +16,22 @@
 
 
 
+        <p>Tester</p>
+
+        <c:forEach var="cupcake" items="${sessionScope.cupcakeList}">
+            <p> ${cupcake.}</p>
+            <table class="table">
+                <thead>
+                <th>Order id</th>
+                <th></th>
+                </thead>
+                <tr>
+                    <td>${}</td>
+                </tr>
+
+            </table>
+        </c:forEach>
+
 
 
 
