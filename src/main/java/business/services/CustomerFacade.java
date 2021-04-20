@@ -27,4 +27,11 @@ public class CustomerFacade
        return rowsAffected;
     }
 
+
+    public String getCustomerEmailByID (int id) throws UserException
+    {
+        String email = customerMapper.getCustomerEmailByID(id);
+        return email;
+    }
+
 }

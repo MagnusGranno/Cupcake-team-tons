@@ -103,4 +103,35 @@ public class CustomerMapper
     }
 
 
+    public String getCustomerEmailByID (int id) throws UserException
+    {
+        String email = "";
+        try(Connection connection = database.connect())
+        {
+            String sql = "SELECT email from Cupcake.users WHERE id = ?;";
+
+            try(PreparedStatement ps = connection.prepareStatement(sql))
+            {
+                ps.setInt(1,id);
+                ResultSet rs = ps.executeQuery();
+                if(rs.next())
+                {
+                    email = rs.getString("email");
+                    return email;
+                }
+
+            } catch (SQLException throwables)
+            {
+                throwables.printStackTrace();
+            }
+
+        } catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+        }
+
+return email;
+    }
+
+
 }
