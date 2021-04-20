@@ -35,6 +35,9 @@ public abstract class Command
 
         commands.put("cart", new CartCommand("shoppingcartpage","customer"));
 
+        commands.put("adminorder", new AdminOrderCommand("adminorderpage","employee"));
+        commands.put("admincustomer", new AdminCustomerCommand("admincustomerpage", "employee"));
+
     }
 
     public static Command fromPath(

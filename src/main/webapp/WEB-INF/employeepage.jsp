@@ -4,13 +4,27 @@
 
 <t:genericpage>
     <jsp:attribute name="header">
-         Demo Page for Employee Roles
+         Employee page
     </jsp:attribute>
     <jsp:attribute name="footer">
     </jsp:attribute>
     <jsp:body>
-        <h1>Hello ${sessionScope.email} </h1>
-        You are now logged in as a EMPLOYEE of our wonderful site.
+        <div class="container-fluid">
+            <div class="row">
+                <h1 class="text-center pb-2">Admin Page</h1>
+
+                <div class="col-lg-6">
+                    <a href="${pageContext.request.contextPath}/fc/adminorder" type="button"
+                       class="btn btn-primary btn-lg w-100 mh-100">Orderlist</a>
+                </div>
+
+                <div class="col-lg-6">
+                    <a href="${pageContext.request.contextPath}/fc/admincustomer" type="button" class="btn btn-primary btn-lg w-100 h-100">Kunder</a>
+                </div>
+
+
+            </div>
+        </div>
 
     </jsp:body>
 </t:genericpage>
