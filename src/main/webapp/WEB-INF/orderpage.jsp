@@ -52,6 +52,7 @@
                 </div>
                 <div class="col-lg-3 pb-2">
                     <button type="submit" class="btn btn-primary">Add to cart</button>
+                    <a href="${pageContext.request.contextPath}/fc/cart" class="btn btn-primary">Go to cart</a>
                 </div>
             </div>
         </form>
