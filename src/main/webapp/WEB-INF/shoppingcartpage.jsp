@@ -19,7 +19,7 @@
             <thead>
             <th>Topping</th>
             <th>Bottom</th>
-            <th>Mængde</th>
+            <th>Antal</th>
             <th>Pris</th>
             </thead>
             <c:forEach var="cartList" items="${sessionScope.cartList}">
