@@ -18,10 +18,10 @@
             <th>Total Price</th>
             <th>Date</th>
             </thead>
-            <c:forEach var="order" items="${requestScope.orderList}">
+            <c:forEach var="order" items="${requestScope.orderWEmail}">
                 <tr>
                     <td>${order.order_id}</td>
-                    <td>${order.user_id}</td>
+                    <td>${order.email}</td>
                     <td>${order.total_price} kr.</td>
                     <td>${order.timestamp}</td>
                 </tr>

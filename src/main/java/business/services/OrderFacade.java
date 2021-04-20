@@ -2,6 +2,7 @@ package business.services;
 
 import business.entities.Cupcake;
 import business.entities.Order;
+import business.entities.OrderWEmail;
 import business.exceptions.UserException;
 import business.persistence.Database;
 import business.persistence.OrderMapper;
@@ -25,6 +26,11 @@ public class OrderFacade {
 
     public List<Order> getAllOrders() throws UserException {
         return orderMapper.getAllOrders();
+    }
+
+    public List<OrderWEmail> getAllOrdersWEmail() throws UserException
+    {
+        return orderMapper.getAllOrdersWEmail();
     }
 
 
