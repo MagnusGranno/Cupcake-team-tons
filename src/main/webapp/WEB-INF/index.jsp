@@ -14,12 +14,21 @@
 
     <jsp:body>
 
-        <div class="w-100 bg-white border-bottom shadow-sm mx-auto">
-            <h1>Velkommen til Olsker Cupcakes</h1>
+<div class="row">
+        <div class="col-sm-3"></div>
+    <div class="col-lg-6">
+        <h1 class="pb-3 text-center">Welcome to Olsker Cupcakes</h1>
 
-            <div style="margin-top: 3em;margin-bottom: 3em;">
-                Main page for this 2. semester start project used at cphbusiness.dk
-            </div>
+
+
+
+                <p class="text-center">Please <a type="button" class="btn btn-sm btn-outline-primary"
+                             href="${pageContext.request.contextPath}/fc/registerpage">Sign up</a>
+                or <a type="button" class="btn btn-sm btn-outline-primary"
+                   href="${pageContext.request.contextPath}/fc/loginpage">Login</a> to begin</p>
+
+
+        </div>
              <c:if test="${sessionScope.role == 'customer' }">
                 <p style="font-size: larger">This is what you can do, since your
                     are logged in as a customer</p>
@@ -27,6 +36,7 @@
             </c:if>
 
         </div>
-
+    <div class="col-sm-3"></div>
+</div>
     </jsp:body>
 </t:genericpage>

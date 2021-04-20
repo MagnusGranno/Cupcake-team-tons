@@ -13,9 +13,11 @@
     </jsp:attribute>
 
     <jsp:body>
+        <div class="pt-lg-2"></div>
+
         <form method="post" action="${pageContext.request.contextPath}/fc/shoppingcart">
             <div class="row">
-                <div class="col-lg-3 pb-2">
+                <div class="col-lg-3 pb-3">
                     <select class="form-select " name="bottom" id="bottom">
                     <option selected>Choose your bottom</option>
                         <c:forEach var="bottom" items="${applicationScope.bottomList}">
@@ -23,7 +25,7 @@
                         </c:forEach>
                     </select>
                 </div>
-                <div class="col-lg-3 pb-2">
+                <div class="col-lg-3 pb-3">
                     <select class="form-select" name="top" id="top">
                         <option selected>Choose your topping</option>
                         <c:forEach var="topping" items="${applicationScope.toppingList}">
@@ -49,7 +51,7 @@
                     </select>
                 </div>
                 <div class="col-lg-3 pb-2">
-                    <button type="submit" class="btn btn-primary">Læg i kurv</button>
+                    <button type="submit" class="btn btn-primary">Add to cart</button>
                 </div>
             </div>
         </form>

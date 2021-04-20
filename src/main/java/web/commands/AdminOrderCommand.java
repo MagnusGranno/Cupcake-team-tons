@@ -26,14 +26,39 @@ public class AdminOrderCommand extends CommandProtectedPage
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException
     {
 
-//        List<Customer> customers = customerFacade.getAllcustomers();
         List<OrderWEmail> orderWEmailList = orderFacade.getAllOrdersWEmail();
-        List<Order> orderList = orderFacade.getAllOrders();
 
 
-        request.setAttribute("orderList", orderList);
+        String id = request.getParameter("remove");
         request.setAttribute("orderWEmail", orderWEmailList);
-//        request.setAttribute("customers", customers);
-        return pageToShow;
+        try
+        {
+
+            if (id != null)
+            {
+
+                int rowsAffected = orderFacade.deleteOrderById(Integer.parseInt(id));
+                if (rowsAffected > 0)
+                {
+                    orderWEmailList = orderFacade.getAllOrdersWEmail();
+                    request.setAttribute("orderWEmail", orderWEmailList);
+
+
+                }
+
+            }
+            request.setAttribute("orderWEmail", orderWEmailList);
+            return pageToShow;
+
+        }
+        catch(UserException ex)
+        {
+
+            request.setAttribute("orderWEmail", orderWEmailList);
+            request.setAttribute("error", "mistakes have been made");
+            return pageToShow;
+        }
+
+
     }
 }

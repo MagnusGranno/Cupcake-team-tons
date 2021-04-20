@@ -37,6 +37,7 @@ public abstract class Command
 
         commands.put("adminorder", new AdminOrderCommand("adminorderpage","employee"));
         commands.put("admincustomer", new AdminCustomerCommand("admincustomerpage", "employee"));
+        commands.put("admincustomerorder", new AdminCustomerOrderCommand("admincustomerorderpage", "employee"));
 
     }
 

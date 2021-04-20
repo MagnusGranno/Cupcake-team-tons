@@ -222,4 +222,32 @@ public class OrderMapper {
 
         return email;
     }
+
+    public int deleteOrderById (int id) throws UserException
+    {
+        int rowsAffected = 0;
+
+        try(Connection connection = database.connect())
+        {
+            String sql = "DELETE FROM Cupcake.order where order_id = ?;";
+
+            try(PreparedStatement ps = connection.prepareStatement(sql))
+            {
+                ps.setInt(1,id);
+
+                rowsAffected = ps.executeUpdate();
+                return rowsAffected;
+            }catch (SQLException ex)
+            {
+                throw new UserException(ex.getMessage());
+            }
+
+
+        } catch (SQLException ex)
+        {
+            throw new UserException(ex.getMessage());
+        }
+
+
+    }
 }

@@ -1,6 +1,7 @@
 package business.services;
 
 import business.entities.Customer;
+import business.entities.Order;
 import business.exceptions.UserException;
 import business.persistence.CustomerMapper;
 import business.persistence.Database;
@@ -32,6 +33,11 @@ public class CustomerFacade
     {
         String email = customerMapper.getCustomerEmailByID(id);
         return email;
+    }
+
+    public List<Order> getCustomerOrderByCustomerId(int id) throws UserException
+    {
+        return customerMapper.getCustomerOrderByCustomerId(id);
     }
 
 }

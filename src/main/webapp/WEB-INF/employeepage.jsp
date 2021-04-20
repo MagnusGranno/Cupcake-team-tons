@@ -11,7 +11,7 @@
     <jsp:body>
         <div class="container-fluid">
             <div class="row">
-                <h1 class="text-center pb-2">Admin Page</h1>
+                <h1 class="text-center pb-4">Admin Page</h1>
 
                 <div class="col-lg-6">
                     <a href="${pageContext.request.contextPath}/fc/adminorder" type="button"

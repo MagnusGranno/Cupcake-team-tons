@@ -33,5 +33,10 @@ public class OrderFacade {
         return orderMapper.getAllOrdersWEmail();
     }
 
+    public int deleteOrderById (int id) throws UserException
+    {
+        return orderMapper.deleteOrderById(id);
+    }
+
 
 }
