@@ -6,10 +6,7 @@ import business.entities.Topping;
 import business.exceptions.UserException;
 import business.persistence.BottomMapper;
 import business.persistence.ToppingMapper;
-import business.services.OrderFacade;
-import jdk.nashorn.internal.runtime.Context;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -24,14 +21,11 @@ public class ShoppingCartCommand extends Command
 {
     public String role;
     public String pageToShow;
-    private OrderFacade orderFacade;
 
     public ShoppingCartCommand(String pageToShow, String role)
     {
         this.pageToShow = pageToShow;
         this.role = role;
-        this.orderFacade = new OrderFacade(database);
-
     }
 
     @Override
@@ -78,7 +72,7 @@ public class ShoppingCartCommand extends Command
 
                     ResultSet rs = ps.executeQuery();
                     while(rs.next()){
-                        price = rs.getInt(1);
+                        price = rs.getInt(1)*amount;
                     }
                 } catch (SQLException e){
                     throw new UserException(e.getMessage());
@@ -94,19 +88,20 @@ public class ShoppingCartCommand extends Command
             }
 
             Cupcake cupcake = new Cupcake(toppingObj,bottomObj,amount,price);
-
             List<Cupcake> cupcakeSessionList = (List<Cupcake>) httpSession.getAttribute("cartList");
-
             cupcakeSessionList.add(cupcake);
 
-            httpSession.setAttribute("cartList",cupcakeSessionList);
+            int total = 0;
+            for (Cupcake value: cupcakeSessionList) {
+                total += value.getPrice();
+            }
 
-            //orderFacade.insertCupcakesIntoDB(cupcake);
+            httpSession.setAttribute("total",total);
+            httpSession.setAttribute("cartList",cupcakeSessionList);
 
         } catch (NumberFormatException e){
             throw new UserException(e.getMessage());
         }
-
         return pageToShow;
     }
 
