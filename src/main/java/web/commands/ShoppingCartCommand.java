@@ -6,6 +6,11 @@ import business.services.OrderFacade;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,19 +33,50 @@ public class ShoppingCartCommand extends Command
 
         try{
 
+            List<Cupcake> cupcakeList = new ArrayList<>();
+
             int bottom = Integer.parseInt(request.getParameter("bottom"));
             int topping = Integer.parseInt(request.getParameter("top"));
             int amount = Integer.parseInt(request.getParameter("amount"));
+            int price = 0;
 
-            /*request.setAttribute("bottom",bottom);
-            request.setAttribute("topping",topping);
-            request.setAttribute("amount",amount);*/
 
-            Cupcake cupcake = new Cupcake(topping,bottom,amount);
+            try(Connection connection = database.connect()){
 
-            /*request.setAttribute("cupcakeList",cupcakeList);*/
+                String sql = "SELECT (SELECT SUM(topping.price) FROM topping WHERE topping_id = ?) + SUM(bottom.price) AS 'total price' FROM bottom WHERE bottom_id = ?;";
 
-            orderFacade.insertCupcakesIntoDB(cupcake);
+                try (PreparedStatement ps = connection.prepareStatement(sql)){
+
+                    ps.setInt(1,topping);
+                    ps.setInt(2,bottom);
+
+                    ResultSet rs = ps.executeQuery();
+                    while(rs.next()){
+                        price = rs.getInt(1);
+                    }
+                } catch (SQLException e){
+                    throw new UserException(e.getMessage());
+                }
+            } catch (SQLException e){
+                throw new UserException(e.getMessage());
+            }
+
+
+            HttpSession httpSession = request.getSession();
+
+            if (httpSession.getAttribute("cartList") == null){
+                httpSession.setAttribute("cartList",cupcakeList);
+            }
+
+            Cupcake cupcake = new Cupcake(topping,bottom,amount,price);
+
+            List<Cupcake> cupcakeSessionList = (List<Cupcake>) httpSession.getAttribute("cartList");
+
+            cupcakeSessionList.add(cupcake);
+
+            httpSession.setAttribute("cartList",cupcakeSessionList);
+
+            //orderFacade.insertCupcakesIntoDB(cupcake);
 
         } catch (NumberFormatException e){
             throw new UserException(e.getMessage());
