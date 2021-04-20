@@ -38,6 +38,7 @@
         <a class="p-2 text-dark" href="${pageContext.request.contextPath}/fc/orderpage">Orders</a>
         <a class="p-2 text-dark" href="#">Profile</a>
         <a class="p-2 text-dark" href="${pageContext.request.contextPath}/fc/shoppingcart">Cart</a>
+
     </nav>
 
     </div>
@@ -46,8 +47,12 @@
 </div>
     <div class="mb-2 pb-2">
 
-        <c:if test="${sessionScope.user != null }">
-            ${sessionScope.user.email}
+
+            <c:if test="${sessionScope.user != null }">
+                ${sessionScope.user.email}
+            </c:if>
+        <c:if test="${sessionScope.role == 'employee' }">
+            <a href="${pageContext.request.contextPath}/fc/employeepage" type="button" class="btn btn-sm btn-primary">Admin</a>
         </c:if>
 
         <c:set var="thisPage" value="${pageContext.request.servletPath}"/>
