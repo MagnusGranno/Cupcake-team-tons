@@ -81,7 +81,6 @@ public class OrderMapper {
                 while(rs.next()){
                     price = rs.getInt(1);
                 }
-
             } catch (SQLException e){
 
                 throw new UserException(e.getMessage());

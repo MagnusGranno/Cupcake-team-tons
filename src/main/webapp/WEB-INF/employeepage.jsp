@@ -19,7 +19,7 @@
                 </div>
 
                 <div class="col-lg-6">
-                    <a href="#" type="button" class="btn btn-primary btn-lg w-100 h-100">Kunder</a>
+                    <a href="${pageContext.request.contextPath}/fc/admincustomer" type="button" class="btn btn-primary btn-lg w-100 h-100">Kunder</a>
                 </div>
 
 
