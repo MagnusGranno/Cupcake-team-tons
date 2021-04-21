@@ -22,7 +22,7 @@
             <th>Bottom</th>
             <th>Amount</th>
             <th>Price</th>
-            <th>Total</th>
+            <th></th>
 
             </thead>
             <c:forEach var="cartList" items="${sessionScope.cartList}">
@@ -40,8 +40,18 @@
                 <td></td>
                 <td></td>
                 <%--TODO: få det til at se pænere ud på hjemmesiden--%>
-                <td>${sessionScope.total} kr.</td>
+                <td></td>
             </tr>
+            <thead>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th><c:if test="${sessionScope.total !=null}">
+                Total: ${sessionScope.total} kr.</th>
+                </c:if>
+
+            <th></th>
+            </thead>
         </table>
 
 
