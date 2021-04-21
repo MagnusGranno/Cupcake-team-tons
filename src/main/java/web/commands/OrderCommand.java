@@ -7,11 +7,13 @@ import javax.servlet.http.HttpServletResponse;
 
 public class OrderCommand extends Command
 {
+    public String role;
     public String pageToShow;
 
-    public OrderCommand(String pageToShow)
-    {
+    public OrderCommand(String pageToShow, String role) {
+
         this.pageToShow = pageToShow;
+        this.role = role;
     }
 
     public String execute(
@@ -23,6 +25,7 @@ public class OrderCommand extends Command
 
         return pageToShow;
     }
+    public String getRole() { return role; }
 }
 
 
