@@ -54,6 +54,16 @@
             </thead>
         </table>
 
+        <div class="row">
+            <div class="col-10"></div>
+            <div class="col">
+                <form method="post" action="${pageContext.request.contextPath}/fc/addOrder">
+                    <button class="btn btn-primary" type="submit">Bestil cupcakes</button>
+                </form>
+            </div>
+        </div>
+
+
 
     </jsp:body>
 </t:genericpage>

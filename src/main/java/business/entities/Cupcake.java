@@ -29,4 +29,7 @@ public class Cupcake {
     public int getAmount() {
         return amount;
     }
+
+
+
 }
