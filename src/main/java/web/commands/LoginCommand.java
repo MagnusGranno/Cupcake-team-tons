@@ -42,5 +42,4 @@ public class LoginCommand extends CommandUnprotectedPage
             return "loginpage";
         }
     }
-
 }

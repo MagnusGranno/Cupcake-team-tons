@@ -34,10 +34,12 @@ public abstract class Command
         commands.put("shoppingcart", new ShoppingCartCommand("orderpage","customer"));
 
         commands.put("cart", new CartCommand("shoppingcartpage","customer"));
+        commands.put("addOrder" , new AddItemsToOrder("shoppingcartpage", "customer"));
 
         commands.put("adminorder", new AdminOrderCommand("adminorderpage","employee"));
         commands.put("admincustomer", new AdminCustomerCommand("admincustomerpage", "employee"));
         commands.put("admincustomerorder", new AdminCustomerOrderCommand("admincustomerorderpage", "employee"));
+
 
     }
 
