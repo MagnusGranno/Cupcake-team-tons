@@ -17,13 +17,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShoppingCartCommand extends Command
-{
+public class ShoppingCartCommand extends Command {
     public String role;
     public String pageToShow;
 
-    public ShoppingCartCommand(String pageToShow, String role)
-    {
+    public ShoppingCartCommand(String pageToShow, String role) {
         this.pageToShow = pageToShow;
         this.role = role;
     }
@@ -36,77 +34,86 @@ public class ShoppingCartCommand extends Command
         Bottom bottomObj = null;
         Topping toppingObj = null;
 
-        try{
 
-            List<Cupcake> cupcakeList = new ArrayList<>();
 
-            //TODO: se om vi kan bruge applicationScope i stedet for at kalde bottomMapper og toppingMapper
 
-            int bottom = Integer.parseInt(request.getParameter("bottom"));
-            List<Bottom> bottomList = bottomMapper.getAllBottoms();
-            for (Bottom value : bottomList) {
-                if(value.getId() == bottom){
-                    bottomObj = value;
-                }
-            }
+            try {
 
-            int topping = Integer.parseInt(request.getParameter("top"));
-            List<Topping> toppingList = toppingMapper.getAllToppings();
-            for (Topping value : toppingList) {
-                if(value.getId() == topping){
-                    toppingObj = value;
-                }
-            }
+                List<Cupcake> cupcakeList = new ArrayList<>();
 
-            int amount = Integer.parseInt(request.getParameter("amount"));
-            int price = 0;
+                //TODO: se om vi kan bruge applicationScope i stedet for at kalde bottomMapper og toppingMapper
 
-            try(Connection connection = database.connect()){
-
-                String sql = "SELECT (SELECT SUM(topping.price) FROM topping WHERE topping_id = ?) + SUM(bottom.price) AS 'total price' FROM bottom WHERE bottom_id = ?;";
-
-                try (PreparedStatement ps = connection.prepareStatement(sql)){
-
-                    ps.setInt(1,topping);
-                    ps.setInt(2,bottom);
-
-                    ResultSet rs = ps.executeQuery();
-                    while(rs.next()){
-                        price = rs.getInt(1)*amount;
+                int bottom = Integer.parseInt(request.getParameter("bottom"));
+                List<Bottom> bottomList = bottomMapper.getAllBottoms();
+                for (Bottom value : bottomList) {
+                    if (value.getId() == bottom) {
+                        bottomObj = value;
                     }
-                } catch (SQLException e){
+                }
+
+                int topping = Integer.parseInt(request.getParameter("top"));
+                List<Topping> toppingList = toppingMapper.getAllToppings();
+                for (Topping value : toppingList) {
+                    if (value.getId() == topping) {
+                        toppingObj = value;
+                    }
+                }
+
+                int amount = Integer.parseInt(request.getParameter("amount"));
+                int price = 0;
+
+                try (Connection connection = database.connect()) {
+
+                    String sql = "SELECT (SELECT SUM(topping.price) FROM topping WHERE topping_id = ?) + SUM(bottom.price) AS 'total price' FROM bottom WHERE bottom_id = ?;";
+
+                    try (PreparedStatement ps = connection.prepareStatement(sql)) {
+
+                        ps.setInt(1, topping);
+                        ps.setInt(2, bottom);
+
+                        ResultSet rs = ps.executeQuery();
+                        while (rs.next()) {
+                            price = rs.getInt(1) * amount;
+                        }
+                    } catch (SQLException e) {
+                        throw new UserException(e.getMessage());
+                    }
+                } catch (SQLException e) {
                     throw new UserException(e.getMessage());
                 }
-            } catch (SQLException e){
+                HttpSession httpSession = request.getSession();
+
+
+                if (httpSession.getAttribute("cartList") == null) {
+                    httpSession.setAttribute("cartList", cupcakeList);
+                }
+
+
+
+                Cupcake cupcake = new Cupcake(toppingObj, bottomObj, amount, price);
+                List<Cupcake> cupcakeSessionList = (List<Cupcake>) httpSession.getAttribute("cartList");
+                cupcakeSessionList.add(cupcake);
+
+                int total = 0;
+                for (Cupcake value : cupcakeSessionList) {
+                    total += value.getPrice();
+                }
+
+                httpSession.setAttribute("total", total);
+
+                httpSession.setAttribute("cartList", cupcakeSessionList);
+
+            } catch (NumberFormatException e) {
                 throw new UserException(e.getMessage());
             }
 
-            HttpSession httpSession = request.getSession();
 
-            if (httpSession.getAttribute("cartList") == null){
-                httpSession.setAttribute("cartList",cupcakeList);
-            }
 
-            Cupcake cupcake = new Cupcake(toppingObj,bottomObj,amount,price);
-            List<Cupcake> cupcakeSessionList = (List<Cupcake>) httpSession.getAttribute("cartList");
-            cupcakeSessionList.add(cupcake);
-
-            int total = 0;
-            for (Cupcake value: cupcakeSessionList) {
-                total += value.getPrice();
-            }
-
-            httpSession.setAttribute("total",total);
-            httpSession.setAttribute("cartList",cupcakeSessionList);
-
-        } catch (NumberFormatException e){
-            throw new UserException(e.getMessage());
-        }
         return pageToShow;
+
     }
 
-    public String getRole()
-    {
+    public String getRole() {
         return role;
     }
 }

@@ -18,6 +18,7 @@
 
         <table class="table">
             <thead class="table-info">
+            <th>Fjern</th>
             <th>Topping</th>
             <th>Bottom</th>
             <th>Amount</th>
@@ -27,6 +28,9 @@
             </thead>
             <c:forEach var="cartList" items="${sessionScope.cartList}">
                 <tr>
+                    <form method="post" action="${pageContext.request.contextPath}/fc/cart">
+                        <td><button class="btn btn-danger" type="submit" name="removeItem" value="${cartList}">X</button></td>
+                    </form>
                     <td>${cartList.topping.name}</td>
                     <td>${cartList.bottom.name}</td>
                     <td>${cartList.amount}</td>
