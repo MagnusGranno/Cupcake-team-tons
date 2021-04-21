@@ -39,7 +39,6 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <%--TODO: få det til at se pænere ud på hjemmesiden--%>
                 <td></td>
             </tr>
             <thead>
