@@ -16,7 +16,26 @@
 
         <c:if test="${sessionScope.role != 'customer' }">
             <div class="row">
-            <div class="col-sm-3"></div>
+            <div class="col-sm-3">
+                <h2>Bottoms</h2>
+                <table class="table">
+                    <thead class="table-info">
+                    <th>Name</th>
+                    <th>Price</th>
+                    </thead>
+                    <c:forEach var="bottom" items="${applicationScope.bottomList}">
+                    <tr>
+                        <td>
+                            ${bottom.name}
+                        </td>
+                        <td>
+                            ${bottom.price} kr.
+                        </td>
+                    </tr>
+                    </c:forEach>
+
+                </table>
+            </div>
             <div class="col-lg-6">
             <h1 class="pb-3 text-center">Welcome to Olsker Cupcakes</h1>
             <p class="text-center">Please <a type="button" class="btn btn-sm btn-outline-primary"
@@ -24,10 +43,28 @@
                 or <a type="button" class="btn btn-sm btn-outline-primary"
                       href="${pageContext.request.contextPath}/fc/loginpage">Login</a> to begin</p>
             </div>
+
+            <div class="col-sm-3">
+                <h2>Toppings</h2>
+                <table class="table">
+                    <thead class="table-info">
+                    <th>Name</th>
+                    <th>Price</th>
+                    </thead>
+                    <c:forEach var="topping" items="${applicationScope.toppingList}">
+                        <tr>
+                            <td>
+                                    ${topping.name}
+                            </td>
+                            <td>
+                                    ${topping.price} kr.
+                            </td>
+                        </tr>
+                    </c:forEach>
+                </table>
             </div>
-            <div class="col-sm-3"></div>
 
-
+            </div>
         </c:if>
              <c:if test="${sessionScope.role == 'customer' }">
                  <div class="row text-center">
