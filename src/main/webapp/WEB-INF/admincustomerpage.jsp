@@ -17,7 +17,7 @@
 
 
         <table class="table">
-            <thead class="table-info">
+            <thead class="table-primary">
             <th>Customer ID</th>
             <th>Email</th>
             <th>Created</th>

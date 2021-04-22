@@ -17,7 +17,7 @@
 
 
         <table class="table">
-            <thead class="table-info">
+            <thead class="table-primary">
             <th>Fjern</th>
             <th>Topping</th>
             <th>Bottom</th>
