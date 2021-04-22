@@ -10,6 +10,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class UserMapperTest {
@@ -92,11 +95,32 @@ public class UserMapperTest {
     public void tester(){
         Topping topping = new Topping(1,"fisk",1);
         Bottom bottom = new Bottom(1,"kage",1);
-        Cupcake cupcake = new Cupcake(topping,bottom,1,1);
 
-        System.out.println(cupcake.hashCode());
+        List<Cupcake> cupcakeList = new ArrayList<>();
+        List<Cupcake> cupcakeList2 = new ArrayList<>();
 
-        System.out.println(cupcake.toString().hashCode());
+        for (int i = 0; i < 100; i++) {
 
+            Cupcake cupcake = new Cupcake(topping,bottom,i,i);
+            cupcakeList.add(cupcake);
+        }
+
+        for (int i = 0; i < 100; i++) {
+
+            Cupcake cupcake = new Cupcake(topping,bottom,i,i);
+            cupcakeList2.add(cupcake);
+        }
+
+
+        for (Cupcake item:cupcakeList) {
+
+            System.out.println(item.getId());
+
+        }
+        for (Cupcake item:cupcakeList2) {
+
+            System.out.println(item.getId());
+
+        }
     }
 }

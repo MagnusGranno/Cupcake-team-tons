@@ -28,23 +28,38 @@ public class RemoveItemFromListCommand extends Command
 
         List<Cupcake> cupcakeSessionList = (List<Cupcake>) httpSession.getAttribute("cartList");
 
-        Object removeItem = request.getParameter("removeItem");
+        int removeItem = Integer.parseInt(request.getParameter("removeItem"));
 
-        if (removeItem != null) {
+        int removeID = existsInList(cupcakeSessionList,removeItem);
 
-            cupcakeSessionList.remove(removeItem);
+        cupcakeSessionList.remove(removeID);
 
-            /*for (Cupcake item: cupcakeSessionList) {
-                if(item.toString().hashCode() == removeItem.hashCode()){
-                    cupcakeSessionList.remove(item);
-                }
-            }*/
+        httpSession.setAttribute("cartList", cupcakeSessionList);
 
-            httpSession.setAttribute("cartList", cupcakeSessionList);
+        int total = 0;
+        for (Cupcake item : cupcakeSessionList) {
+            total += item.getPrice();
+        }
+        httpSession.setAttribute("total",total);
+
+        if (cupcakeSessionList.isEmpty()){
+            httpSession.removeAttribute("total");
         }
 
         return pageToShow;
     }
+
+    public int existsInList(List<Cupcake> cupcakeList, int id){
+
+        for (int i = 0; i < cupcakeList.size(); i++) {
+            if (id == cupcakeList.get(i).getId()) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+
 
     public String getRole()
     {

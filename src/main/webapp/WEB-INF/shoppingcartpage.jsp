@@ -29,7 +29,7 @@
             <c:forEach var="cartList" items="${sessionScope.cartList}">
                 <tr>
                     <form method="post" action="${pageContext.request.contextPath}/fc/removeitem">
-                        <td><button class="btn btn-danger" type="submit" name="removeItem" value="${cartList}">X</button></td>
+                        <td><button class="btn btn-danger" type="submit" name="removeItem" value="${cartList.id}">X</button></td>
                     </form>
 
                     <td>${cartList.topping.name}</td>
@@ -61,9 +61,11 @@
         <div class="row">
             <div class="col-10"></div>
             <div class="col">
+                <c:if test="${sessionScope.total !=null}">
                 <form method="post" action="${pageContext.request.contextPath}/fc/addOrder">
                     <button class="btn btn-primary" type="submit">Bestil cupcakes</button>
                 </form>
+                </c:if>
             </div>
         </div>
 
