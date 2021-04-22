@@ -21,18 +21,31 @@
 
 
 
-
+        <c:if test="${sessionScope.role != 'customer' }">
                 <p class="text-center">Please <a type="button" class="btn btn-sm btn-outline-primary"
                              href="${pageContext.request.contextPath}/fc/registerpage">Sign up</a>
                 or <a type="button" class="btn btn-sm btn-outline-primary"
                    href="${pageContext.request.contextPath}/fc/loginpage">Login</a> to begin</p>
 
-
+        </c:if>
         </div>
              <c:if test="${sessionScope.role == 'customer' }">
-                <p style="font-size: larger">This is what you can do, since your
-                    are logged in as a customer</p>
-                <p><a href="fc/customerpage">Customer Page</a>
+                <table class="table">
+                    <thead>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    </thead>
+                    <tr>
+                        <td><a href="${pageContext.request.contextPath}/fc/orderpageCustomer" class="btn btn-lg btn-primary">Order</a></td>
+                        <td><a href="${pageContext.request.contextPath}/fc/cart" class="btn btn-lg btn-primary">Cart</a></td>
+
+                        <td><form method="post" action="${pageContext.request.contextPath}/fc/profile">
+                            <button type="submit" class="btn btn-lg btn-primary" name="userprofile" value="${sessionScope.user.id}">Profile</button>
+                        </form></td>
+                    </tr>
+                </table>
+
             </c:if>
 
         </div>
