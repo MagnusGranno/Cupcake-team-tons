@@ -1,5 +1,8 @@
 package business.persistence;
 
+import business.entities.Bottom;
+import business.entities.Cupcake;
+import business.entities.Topping;
 import business.entities.User;
 import business.exceptions.UserException;
 import org.junit.jupiter.api.BeforeAll;
@@ -83,5 +86,17 @@ public class UserMapperTest {
         userMapper.createUser( original );
         User retrieved = userMapper.login( "king@kong.com", "uhahvorhemmeligt" );
         assertEquals( "konge", retrieved.getRole() );
+    }
+
+    @Test
+    public void tester(){
+        Topping topping = new Topping(1,"fisk",1);
+        Bottom bottom = new Bottom(1,"kage",1);
+        Cupcake cupcake = new Cupcake(topping,bottom,1,1);
+
+        System.out.println(cupcake.hashCode());
+
+        System.out.println(cupcake.toString().hashCode());
+
     }
 }

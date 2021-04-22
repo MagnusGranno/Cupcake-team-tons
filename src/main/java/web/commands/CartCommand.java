@@ -27,29 +27,7 @@ public class CartCommand extends Command
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
 
-        HttpSession httpSession = request.getSession();
 
-        List<Cupcake> cupcakeSessionList = (List<Cupcake>) httpSession.getAttribute("cartList");
-
-        String removeItem = request.getParameter("removeItem");
-
-
-
-        if (removeItem != null) {
-            String[] removeItemSplit = removeItem.split("@");
-
-            for (Cupcake item: cupcakeSessionList) {
-
-                if(item.hashCode() == Integer.parseInt(removeItemSplit[1])){
-                    cupcakeSessionList.remove(item);
-                }
-            }
-            /*cupcakeSessionList.remove(request.getParameter("removeItem"));
-
-            cupcakeSessionList.remove(removeItem);*/
-            httpSession.setAttribute("cartList", cupcakeSessionList);
-
-        }
 
         return pageToShow;
     }

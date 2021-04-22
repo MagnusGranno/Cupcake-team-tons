@@ -39,12 +39,12 @@
         <c:if test="${sessionScope.role != null}">
 
             <c:if test="${sessionScope.role == 'customer'}">
-             <a class="p-2 text-dark" href="${pageContext.request.contextPath}/fc/orderpageCustomer">Orders</a>
+             <a class="p-2 text-dark" href="${pageContext.request.contextPath}/fc/orderpageCustomer">Order</a>
                 <a class="p-2 text-dark" href="${pageContext.request.contextPath}/fc/cart">Cart</a>
                 <a class="p-2 text-dark" href="#">Profile</a>
              </c:if>
             <c:if test="${sessionScope.role == 'employee'}">
-                <a class="p-2 text-dark" href="${pageContext.request.contextPath}/fc/orderpageEmployee">Orders</a>
+                <a class="p-2 text-dark" href="${pageContext.request.contextPath}/fc/orderpageEmployee">Order</a>
                 <a class="p-2 text-dark" href="${pageContext.request.contextPath}/fc/cart">Cart</a>
                 <a class="p-2 text-dark" href="#">Profile</a>
             </c:if>

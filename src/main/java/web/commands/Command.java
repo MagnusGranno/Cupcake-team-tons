@@ -42,6 +42,8 @@ public abstract class Command
         commands.put("admincustomer", new AdminCustomerCommand("admincustomerpage", "employee"));
         commands.put("admincustomerorder", new AdminCustomerOrderCommand("admincustomerorderpage", "employee"));
 
+        commands.put("removeitem", new RemoveItemFromListCommand("shoppingcartpage","customer"));
+
 
     }
 

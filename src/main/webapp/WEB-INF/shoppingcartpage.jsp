@@ -28,9 +28,10 @@
             </thead>
             <c:forEach var="cartList" items="${sessionScope.cartList}">
                 <tr>
-                    <form method="post" action="${pageContext.request.contextPath}/fc/cart">
+                    <form method="post" action="${pageContext.request.contextPath}/fc/removeitem">
                         <td><button class="btn btn-danger" type="submit" name="removeItem" value="${cartList}">X</button></td>
                     </form>
+
                     <td>${cartList.topping.name}</td>
                     <td>${cartList.bottom.name}</td>
                     <td>${cartList.amount}</td>
