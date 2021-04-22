@@ -31,22 +31,24 @@
 
 
     <div>
-    <nav class="my-2 my-md-0 me-md-3">
+    <nav class="my-2 my-md-0 me-md-3 navbar pb-3 pt-0">
         <c:if test="${addHomeLink == null }">
-            <a class="p-2 text-dark" href="<%=request.getContextPath()%>">Home</a>
+            <a class="btn btn-light p-2" href="<%=request.getContextPath()%>">Home</a>
         </c:if>
 
         <c:if test="${sessionScope.role != null}">
 
             <c:if test="${sessionScope.role == 'customer'}">
-             <a class="p-2 text-dark" href="${pageContext.request.contextPath}/fc/orderpageCustomer">Orders</a>
-                <a class="p-2 text-dark" href="${pageContext.request.contextPath}/fc/cart">Cart</a>
-                <a class="p-2 text-dark" href="#">Profile</a>
+             <a class="btn btn-light p-2 " href="${pageContext.request.contextPath}/fc/orderpageCustomer">Orders</a>
+                <a class="btn btn-light p-2" href="${pageContext.request.contextPath}/fc/cart">Cart</a>
+                <form method="post" action="${pageContext.request.contextPath}/fc/profile">
+                    <button type="submit" class="btn btn-light p-2" name="userprofile" value="${sessionScope.user.id}">Profile</button>
+                </form>
              </c:if>
             <c:if test="${sessionScope.role == 'employee'}">
-                <a class="p-2 text-dark" href="${pageContext.request.contextPath}/fc/orderpageEmployee">Orders</a>
-                <a class="p-2 text-dark" href="${pageContext.request.contextPath}/fc/cart">Cart</a>
-                <a class="p-2 text-dark" href="#">Profile</a>
+                <a class="p-2 btn btn-light" href="${pageContext.request.contextPath}/fc/orderpageEmployee">Orders</a>
+                <a class="p-2 btn btn-light" href="${pageContext.request.contextPath}/fc/cart">Cart</a>
+<%--                <a class="p-2 text-dark" href="${pageContext.request.contextPath}/fc/profile">Profile</a>--%>
             </c:if>
         </c:if>
 
