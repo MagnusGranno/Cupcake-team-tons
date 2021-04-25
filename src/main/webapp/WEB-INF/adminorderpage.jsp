@@ -13,8 +13,8 @@
             <h1 class="pb-2 pl-lg-5">Orders</h1>
             <a href="${pageContext.request.contextPath}/fc/employeepage" class="btn btn-primary btn-lg">Back to admin page</a>
         </div>
-        <table class="table">
-            <thead class="table-info">
+        <table class="table ">
+            <thead class="table-primary">
             <th>OrderID</th>
             <th>UserID</th>
             <th>Total Price</th>
