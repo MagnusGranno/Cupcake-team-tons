@@ -22,7 +22,7 @@
             </div>
                 <h2 class="pb-2">Your orders:</h2>
                 <table class="table">
-                    <thead class="table-info">
+                    <thead class="table-primary">
                     <th>Order Id</th>
                     <th>Price</th>
                     <th>Date</th>

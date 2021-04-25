@@ -5,7 +5,7 @@
 <t:genericpage>
 
     <jsp:attribute name="header">
-         Home
+         Order
     </jsp:attribute>
 
     <jsp:attribute name="footer">
@@ -13,7 +13,7 @@
     </jsp:attribute>
 
     <jsp:body>
-        <div class="pt-lg-2"></div>
+
 
         <form method="post" action="${pageContext.request.contextPath}/fc/shoppingcart">
             <div class="row">

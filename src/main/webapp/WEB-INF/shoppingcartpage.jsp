@@ -5,7 +5,7 @@
 <t:genericpage>
 
     <jsp:attribute name="header">
-         Home
+         Cart
     </jsp:attribute>
 
     <jsp:attribute name="footer">
@@ -13,63 +13,50 @@
     </jsp:attribute>
 
     <jsp:body>
+
         <h2 class="pb-2">Cart for ${sessionScope.email}</h2>
 
-
-        <table class="table">
+        <table class="table table-responsive-lg">
             <thead class="table-primary">
-            <th>Fjern</th>
-            <th>Topping</th>
-            <th>Bottom</th>
-            <th>Amount</th>
-            <th>Price</th>
-            <th></th>
-
+                <th>Remove</th>
+                <th>Topping</th>
+                <th>Bottom</th>
+                <th>Amount</th>
+                <th>Price</th>
             </thead>
+
             <c:forEach var="cartList" items="${sessionScope.cartList}">
                 <tr>
                     <form method="post" action="${pageContext.request.contextPath}/fc/removeitem">
-                        <td><button class="btn btn-danger" type="submit" name="removeItem" value="${cartList.id}">X</button></td>
+                        <td><button class="btn btn-primary" type="submit" name="removeItem" value="${cartList.id}">X</button></td>
                     </form>
-
                     <td>${cartList.topping.name}</td>
                     <td>${cartList.bottom.name}</td>
                     <td>${cartList.amount}</td>
                     <td>${cartList.price} kr.</td>
-                    <td></td>
                 </tr>
             </c:forEach>
-            <%--<tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>--%>
-            <thead>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th><c:if test="${sessionScope.total !=null}">
-                    Total: ${sessionScope.total} kr.</th>
-                </c:if>
-            </thead>
-        </table>
 
+            <c:if test="${sessionScope.total !=null}">
+            <thead class="table-primary">
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>Total: ${sessionScope.total} kr.</th>
+            </thead>
+            </c:if>
+        </table>
         <div class="row">
             <div class="col-10"></div>
             <div class="col">
                 <c:if test="${sessionScope.total !=null}">
-                <form method="post" action="${pageContext.request.contextPath}/fc/addOrder">
-                    <button class="btn btn-primary" type="submit">Bestil cupcakes</button>
-                </form>
+                    <form method="post" action="${pageContext.request.contextPath}/fc/addOrder">
+                        <button class="btn btn-primary" type="submit">Bestil cupcakes</button>
+                    </form>
                 </c:if>
             </div>
         </div>
-
 
 
     </jsp:body>
