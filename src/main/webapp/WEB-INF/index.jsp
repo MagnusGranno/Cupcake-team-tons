@@ -14,29 +14,76 @@
 
     <jsp:body>
 
-<div class="row">
-        <div class="col-sm-3"></div>
-    <div class="col-lg-6">
-        <h1 class="pb-3 text-center">Welcome to Olsker Cupcakes</h1>
+        <c:if test="${sessionScope.role != 'customer' }">
+            <div class="row">
+            <div class="col-sm-3">
+                <h2>Bottoms</h2>
+                <table class="table">
+                    <thead class="table-info">
+                    <th>Name</th>
+                    <th>Price</th>
+                    </thead>
+                    <c:forEach var="bottom" items="${applicationScope.bottomList}">
+                    <tr>
+                        <td>
+                            ${bottom.name}
+                        </td>
+                        <td>
+                            ${bottom.price} kr.
+                        </td>
+                    </tr>
+                    </c:forEach>
 
-
-
-
-                <p class="text-center">Please <a type="button" class="btn btn-sm btn-outline-primary"
-                             href="${pageContext.request.contextPath}/fc/registerpage">Sign up</a>
+                </table>
+            </div>
+            <div class="col-lg-6">
+            <h1 class="pb-3 text-center">Welcome to Olsker Cupcakes</h1>
+            <p class="text-center">Please <a type="button" class="btn btn-sm btn-outline-primary"
+                                             href="${pageContext.request.contextPath}/fc/registerpage">Sign up</a>
                 or <a type="button" class="btn btn-sm btn-outline-primary"
-                   href="${pageContext.request.contextPath}/fc/loginpage">Login</a> to begin</p>
+                      href="${pageContext.request.contextPath}/fc/loginpage">Login</a> to begin</p>
+            </div>
 
+            <div class="col-sm-3">
+                <h2>Toppings</h2>
+                <table class="table">
+                    <thead class="table-info">
+                    <th>Name</th>
+                    <th>Price</th>
+                    </thead>
+                    <c:forEach var="topping" items="${applicationScope.toppingList}">
+                        <tr>
+                            <td>
+                                    ${topping.name}
+                            </td>
+                            <td>
+                                    ${topping.price} kr.
+                            </td>
+                        </tr>
+                    </c:forEach>
+                </table>
+            </div>
 
-        </div>
+            </div>
+        </c:if>
              <c:if test="${sessionScope.role == 'customer' }">
-                <p style="font-size: larger">This is what you can do, since your
-                    are logged in as a customer</p>
-                <p><a href="fc/customerpage">Customer Page</a>
+                 <div class="row text-center">
+                     <div class="col-sm-4">
+                        <a href="${pageContext.request.contextPath}/fc/orderpageCustomer" class="btn btn-lg btn-primary">Order</a>
+                     </div>
+                 <div class="col-sm-4">
+                        <a href="${pageContext.request.contextPath}/fc/cart" class="btn btn-lg btn-block btn-primary">Cart</a>
+                 </div>
+                 <div class="col-sm-4">
+                        <form method="post" action="${pageContext.request.contextPath}/fc/profile">
+                            <button type="submit" class="btn btn-lg btn-block btn-primary" name="userprofile" value="${sessionScope.user.id}">Profile</button>
+                        </form>
+                 </div>
+                 </div>
             </c:if>
 
-        </div>
-    <div class="col-sm-3"></div>
-</div>
+
+
+
     </jsp:body>
 </t:genericpage>

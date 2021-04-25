@@ -39,5 +39,9 @@ public class CustomerFacade
     {
         return customerMapper.getCustomerOrderByCustomerId(id);
     }
+    public int getOldBalance(int id) throws UserException
+    {
+        return customerMapper.getOldBalance(id);
+    }
 
 }
