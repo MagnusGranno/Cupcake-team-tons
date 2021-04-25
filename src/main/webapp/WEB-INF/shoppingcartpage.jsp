@@ -39,22 +39,23 @@
                     <td></td>
                 </tr>
             </c:forEach>
-            <tr>
+            <%--<tr>
                 <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
-            </tr>
+                <td></td>
+            </tr>--%>
             <thead>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th><c:if test="${sessionScope.total !=null}">
-                Total: ${sessionScope.total} kr.</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th><c:if test="${sessionScope.total !=null}">
+                    Total: ${sessionScope.total} kr.</th>
                 </c:if>
-
-            <th></th>
             </thead>
         </table>
 
