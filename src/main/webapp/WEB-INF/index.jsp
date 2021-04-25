@@ -19,7 +19,7 @@
             <div class="col-sm-3">
                 <h2>Bottoms</h2>
                 <table class="table">
-                    <thead class="table-info">
+                    <thead class="table-primary">
                     <th>Name</th>
                     <th>Price</th>
                     </thead>
@@ -47,7 +47,7 @@
             <div class="col-sm-3">
                 <h2>Toppings</h2>
                 <table class="table">
-                    <thead class="table-info">
+                    <thead class="table-primary">
                     <th>Name</th>
                     <th>Price</th>
                     </thead>
