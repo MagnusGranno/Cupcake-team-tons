@@ -20,8 +20,8 @@ import javax.servlet.http.HttpServletResponse;
 public class FrontController extends HttpServlet
 {
 
-    private final static String USER = "managesql";
-    private final static String PASSWORD = "sql2139";
+    private final static String USER = "****";
+    private final static String PASSWORD = "****";
     private final static String URL = "jdbc:mysql://165.22.92.46:3306/Cupcake?serverTimezone=CET";
 
 

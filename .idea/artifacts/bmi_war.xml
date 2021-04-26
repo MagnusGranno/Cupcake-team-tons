@@ -1,14 +1,14 @@
 <component name="ArtifactManager">
-  <artifact type="war" name="sem2-startcode:war">
+  <artifact type="war" name="bmi:war">
     <output-path>$PROJECT_DIR$/target</output-path>
     <properties id="maven-jee-properties">
       <options>
-        <module>sem2-startcode</module>
+        <module>bmi</module>
         <packaging>war</packaging>
       </options>
     </properties>
-    <root id="archive" name="sem2-startcode-1.0-SNAPSHOT.war">
-      <element id="artifact" artifact-name="sem2-startcode:war exploded" />
+    <root id="archive" name="cupcake-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="bmi:war exploded" />
     </root>
   </artifact>
 </component>

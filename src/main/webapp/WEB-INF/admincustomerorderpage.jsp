@@ -19,7 +19,7 @@
 
 
         <table class="table">
-            <thead class="table-info">
+            <thead class="table-primary">
             <th>Order Id</th>
             <th>Total Price</th>
             <th>Date</th>
